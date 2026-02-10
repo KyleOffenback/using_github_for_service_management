@@ -1,0 +1,7 @@
+[systems]
+127.0.0.1
+
+[systems:vars]
+organization=American Systems
+network=doggy
+ansible_connection=local

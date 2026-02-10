@@ -1,0 +1,7 @@
+[systems]
+127.0.0.1
+
+[systems:vars]
+organization=Epsilon-Inc
+network=unicorn
+ansible_connection=local

@@ -1,0 +1,27 @@
+---
+- name: Account Audit Playbook
+  hosts: systems
+  gather_facts: false
+
+  tasks:
+    - name: Manual task - create ticket
+      ansible.builtin.debug:
+        msg: "Create a ticket in Helix"
+
+    - name: Automated task - run whoami
+      ansible.builtin.command: whoami
+      register: whoami
+
+    - name: Automated task - Create Documentation
+      ansible.builtin.template:
+        src: whoami_documentation.txt.j2
+        dest: docs/{{ whoami.stdout }}_documentation.txt
+        mode: '0644'
+
+    - name: Manual task - Update ticket with documentation or artifacts
+      ansible.builtin.debug:
+        msg: "Upload the documentation generated to the ticket"
+
+    - name: Manual task - close ticket
+      ansible.builtin.debug:
+        msg: "Close the service request ticket"
